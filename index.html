@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Լսիր ձայնը</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: #fff1dc;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 380px;
+      padding: 30px 20px;
+      text-align: center;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    .photo {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    p {
+      color: #777;
+      font-size: 17px;
+    }
+
+    #playButton {
+      width: 90px;
+      height: 90px;
+      border: none;
+      border-radius: 50%;
+      background: #ff9f43;
+      font-size: 38px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    #playButton:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <img class="photo" src="picture.jpg" alt="Նկար">
+
+    <h1>Բարև 👋</h1>
+
+    <p>Սեղմիր կոճակը՝ ձայնը լսելու համար</p>
+
+    <button id="playButton">▶️</button>
+
+    <audio id="audio" src="voice.mp3" preload="auto"></audio>
+
+  </div>
+
+  <script>
+    const audio = document.getElementById("audio");
+    const button = document.getElementById("playButton");
+
+    button.addEventListener("click", function () {
+      if (audio.paused) {
+        audio.play();
+        button.textContent = "⏸️";
+      } else {
+        audio.pause();
+        button.textContent = "▶️";
+      }
+    })
+    audio.addEventListener("ended", function () {
+      button.textContent = "▶️";
+    });
+  </script>
+</body>
+</html>
